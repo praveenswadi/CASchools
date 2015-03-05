@@ -1,7 +1,17 @@
 # Bootstrap
 First run through fixed width format file to extract minimum fields for our use and output a tab delimited file.
 ```
-awk -f data/api13gtx.txt > api.tsv
+awk -f parse.awk data/api13gtx.txt > api.tsv
+```
+
+How many school districts in California?
+```
+cat api.tsv| awk -F "\t" '{print $4}' | uniq | wc -l
+```
+
+How many schools in each school district?
+```
+cat api.tsv| awk -F "\t" '{print $4}' | uniq -c | sort -n
 ```
 
 To find schools in each county that score >= 900 schools
