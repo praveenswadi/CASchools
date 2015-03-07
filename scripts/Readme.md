@@ -6,12 +6,12 @@ awk -f parse.awk data/api13gtx.txt > api.tsv
 
 How many school districts in California?
 ```
-cat api.tsv| awk -F "\t" '{print $4}' | uniq | wc -l
+cat api.tsv| awk -F "\t" '{print $4}' | sort | uniq | wc -l
 ```
 
 How many schools in each school district?
 ```
-cat api.tsv| awk -F "\t" '{print $4}' | uniq -c | sort -n
+cat api.tsv| awk -F "\t" '{print $4}' | sort | uniq -c | sort -n
 ```
 
 To find schools in each county that score >= 900 schools
